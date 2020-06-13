@@ -5,12 +5,17 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test start http://localhost:8080 cy:run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cypress": "^4.8.0",
+    "start-server-and-test": "^1.11.0"
   }
 }
