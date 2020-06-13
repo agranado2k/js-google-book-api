@@ -1,5 +1,5 @@
-const getHellowWorld = require('../../src/index');
+const util = require('../../src/util');
 
 test('Hello World message', () => {
-  expect(getHellowWorld()).toBe('Hello world!');
+  expect(util.getHelloWorld()).toBe('Hello world!');
 });
