@@ -2,10 +2,13 @@
   "name": "js-google-book-api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
     "start": "node .",
-    "test": "npm run test:unit && test:e2e",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest",
     "cy:run": "cypress run",
     "test:e2e": "start-server-and-test start http://localhost:8080 cy:run"
@@ -17,8 +20,14 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
     "cypress": "^4.8.0",
+    "jest": "^26.0.1",
     "start-server-and-test": "^1.11.0",
-    "jest": "^26.0.1"
+    "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
   }
 }
