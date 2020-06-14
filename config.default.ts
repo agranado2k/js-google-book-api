@@ -1,10 +1,10 @@
 const env = process.env.NODE_ENV || "production";
 const config: Record<string, any> = {
   production: {
-    port: 8080
+    port: 80
   },
   dev: {
-    port: 8080
+    port: 80
   }
 };
 

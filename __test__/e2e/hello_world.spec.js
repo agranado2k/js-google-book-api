@@ -1,6 +1,6 @@
 describe('My First Test', () => {
   it('Hello World!', () => {
-    cy.visit('http://localhost:8080');
+    cy.visit('http://localhost');
 
     cy.contains('Hello world!');
   });
