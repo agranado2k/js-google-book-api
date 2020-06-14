@@ -1,0 +1,37 @@
+language: node_js
+
+node_js:
+  - node
+
+cache:
+  directories:
+  - "$HOME/.npm"
+
+services:
+  - docker
+
+install:
+  - npm install
+
+env:
+  global:
+    - DOCKER_IMAGE=agranado2k/js-google-book-api
+    - DOCKER_TAG=$TRAVIS_COMMIT
+
+jobs:
+  include:
+    - stage: "Unit Tests"
+      script: npm run test:unit
+    - stage: "Build image"
+      script:
+        docker build . -t $DOCKER_IMAGE:$DOCKER_TAG &&
+        ./scripts/pushDockerImage.sh $DOCKER_TAG
+    - stage: "E2E Tests"
+      script: 
+        docker pull $DOCKER_IMAGE:$DOCKER_TAG &&
+        DOCKER_TAG=$TRAVIS_COMMIT npm run test:e2e
+    - stage: "Deploy"
+      deploy:
+        provider: heroku
+        script: 
+          npx semantic-release $DOCKER_TAG
