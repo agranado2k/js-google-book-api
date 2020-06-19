@@ -4,7 +4,7 @@ import path from "path";
 import config from "../config.default";
 
 const app = express();
-const port = config.port; // default port to listen
+const port = process.env.PORT || config.port; // default port to listen
 
 // Configure Express to use EJS
 app.set( "views", path.join( __dirname, "views" ) );
