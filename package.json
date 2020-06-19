@@ -1,6 +1,6 @@
 {
   "name": "js-google-book-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Google Book API with Express",
   "keywords": [],
   "repository": "git@github.com:agranado2k/js-google-book-api.git",
