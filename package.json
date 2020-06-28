@@ -16,11 +16,15 @@
     "dev:start": "npx npm-run-all build start",
     "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
     "start": "node .",
-    "cy:run": "cypress run && ./scripts/stopDocker.sh",
-    "start:docker": "./scripts/startDocker.sh",
+    "cy:run:ci": "cypress run && ./scripts/stopDocker.sh",
+    "cy:run:local": "cypress run --env TEST_PORT=:8080",
+    "cy:open": "cypress open",
+    "docker:start": "./scripts/startDocker.sh",
+    "docker:build": "docker build . -t agranado2k/js-google-book-api:test",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest",
-    "test:e2e": "start-server-and-test start:docker http://localhost cy:run"
+    "test:e2e": "start-server-and-test start http://localhost:8080 cy:run:local",
+    "test:e2e:ci": "start-server-and-test docker:start http://localhost cy:run:ci"
   },
   "release": {
     "branches": [
